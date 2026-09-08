@@ -146,6 +146,29 @@ export default async function CoursePage({
         </Link>
       </section>
 
+      {course.slug === "choke-operations" ? (
+        <section className="mt-6 rounded-lg border border-[var(--brand-border)] bg-white p-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="font-serif text-lg font-semibold text-brand-navy">
+              Choke drill
+            </h2>
+            <span className="rounded-full border border-brand-gold bg-brand-gold/10 px-3 py-1 text-xs font-medium text-brand-navy">
+              Preview
+            </span>
+          </div>
+          <p className="mt-2 text-sm leading-6 text-zinc-600">
+            Practise holding casing pressure against a well that answers the
+            choke late &mdash; the habit this course is built around.
+          </p>
+          <Link
+            href="/simulator"
+            className="mt-4 inline-flex h-11 items-center justify-center rounded-full border border-brand-navy px-6 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white"
+          >
+            Open the choke drill
+          </Link>
+        </section>
+      ) : null}
+
       <section className="mt-6 rounded-lg border border-[var(--brand-border)] bg-zinc-50 p-6">
         <h2 className="font-serif text-lg font-semibold text-brand-navy">
           Certificate
