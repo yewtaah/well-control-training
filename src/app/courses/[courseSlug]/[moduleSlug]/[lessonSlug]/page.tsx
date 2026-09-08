@@ -38,29 +38,27 @@ export default async function LessonPage({
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
       <Link
         href={`/courses/${course.slug}`}
-        className="text-sm font-medium text-zinc-500 hover:text-black dark:hover:text-zinc-50"
+        className="text-sm font-medium text-zinc-500 hover:text-brand-navy"
       >
         &larr; {course.title}
       </Link>
-      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-500">
+      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-teal">
         {courseModule.title}
       </p>
-      <h1 className="mt-1 text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
+      <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-brand-navy">
         {lesson.title}
       </h1>
-      <p className="mt-4 text-base leading-7 text-zinc-600 dark:text-zinc-400">
-        {lesson.content}
-      </p>
+      <p className="mt-4 text-base leading-7 text-zinc-600">{lesson.content}</p>
 
       <div className="mt-10">
         <LessonComplete courseSlug={course.slug} lessonKey={lessonKey} />
       </div>
 
-      <div className="mt-10 flex items-center justify-between border-t border-black/[.08] pt-6 dark:border-white/[.145]">
+      <div className="mt-10 flex items-center justify-between border-t border-[var(--brand-border)] pt-6">
         {prev ? (
           <Link
             href={`/courses/${course.slug}/${prev.courseModule.slug}/${prev.lesson.slug}`}
-            className="text-sm font-medium text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+            className="text-sm font-medium text-zinc-600 hover:text-brand-navy"
           >
             &larr; {prev.lesson.title}
           </Link>
@@ -70,7 +68,7 @@ export default async function LessonPage({
         {next ? (
           <Link
             href={`/courses/${course.slug}/${next.courseModule.slug}/${next.lesson.slug}`}
-            className="text-sm font-medium text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+            className="text-sm font-medium text-zinc-600 hover:text-brand-navy"
           >
             {next.lesson.title} &rarr;
           </Link>

@@ -19,21 +19,21 @@ export default async function CoursePage({
     <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-16">
       <Link
         href="/courses"
-        className="text-sm font-medium text-zinc-500 hover:text-black dark:hover:text-zinc-50"
+        className="text-sm font-medium text-zinc-500 hover:text-brand-navy"
       >
         &larr; All courses
       </Link>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
+      <h1 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-brand-navy">
         {course.title}
       </h1>
-      <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-400">
+      <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
         {course.description}
       </p>
 
       <div className="mt-10 flex flex-col gap-8">
         {course.modules.map((courseModule, moduleIndex) => (
           <div key={courseModule.slug}>
-            <h2 className="text-lg font-semibold text-black dark:text-zinc-50">
+            <h2 className="font-serif text-lg font-semibold text-brand-navy">
               Module {moduleIndex + 1}: {courseModule.title}
             </h2>
             <ul className="mt-3 flex flex-col gap-2">
@@ -41,9 +41,9 @@ export default async function CoursePage({
                 <li key={lesson.slug}>
                   <Link
                     href={`/courses/${course.slug}/${courseModule.slug}/${lesson.slug}`}
-                    className="flex items-center justify-between rounded-lg border border-black/[.08] bg-white px-4 py-3 transition-colors hover:border-black/20 dark:border-white/[.145] dark:bg-zinc-950 dark:hover:border-white/30"
+                    className="flex items-center justify-between rounded-lg border border-[var(--brand-border)] bg-white px-4 py-3 transition-colors hover:border-brand-teal hover:shadow-sm"
                   >
-                    <span className="text-sm font-medium text-black dark:text-zinc-50">
+                    <span className="text-sm font-medium text-brand-navy">
                       {lessonIndex + 1}. {lesson.title}
                     </span>
                     <span className="text-xs text-zinc-500">

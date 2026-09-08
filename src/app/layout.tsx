@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Lora } from "next/font/google";
 import { AuthenticatedApp } from "@/components/AuthenticatedApp";
+import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,25 +14,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Well Control Training",
   description:
-    "Courses and knowledge sharing for well control and oil & gas field readiness.",
+    "Courses and knowledge sharing for well control and oil & gas field readiness, from WellCommand Assurance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 font-sans dark:bg-black">
+      <body className="flex min-h-full flex-col bg-white font-sans text-[var(--foreground)]">
         <AuthenticatedApp>{children}</AuthenticatedApp>
-        <footer className="border-t border-black/[.08] px-6 py-8 text-sm text-zinc-500 dark:border-white/[.145] dark:text-zinc-500">
-          <div className="mx-auto w-full max-w-5xl">
-            &copy; {new Date().getFullYear()} Well Control Training
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
