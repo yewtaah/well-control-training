@@ -104,8 +104,13 @@ export function AuthenticatedApp({ children }: { children: ReactNode }) {
   return (
     <Authenticator components={{ Header: AuthHeader }}>
       <ProgressProvider>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
+        <div id="main-content" className="flex flex-1 flex-col">
+          {children}
+        </div>
       </ProgressProvider>
     </Authenticator>
   );

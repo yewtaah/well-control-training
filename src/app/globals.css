@@ -93,3 +93,42 @@ body {
     page-break-inside: avoid;
   }
 }
+
+/* A visible focus ring on every interactive element, in brand gold so it
+   reads against both the navy chrome and the white content areas. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Skip link: off-screen until focused, then pinned to the top-left. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 50;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+  font-weight: 600;
+}
+
+/* Honour a reduced-motion preference — the choke drill trace and progress
+   bars are the only animated surfaces, and neither needs motion to be read. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

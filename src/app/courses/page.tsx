@@ -38,7 +38,7 @@ export default function CoursesPage() {
                   </p>
                 </div>
                 <div className="w-full shrink-0 sm:w-48">
-                  <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-brand-navy/60">
+                  <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-brand-navy/70">
                     {course.estimatedMinutes} min &middot; {total} lessons
                   </p>
                   <CourseProgressBar

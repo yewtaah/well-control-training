@@ -75,7 +75,7 @@ export default function Home() {
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-navy text-xs font-semibold text-white">
                         {course.order}
                       </span>
-                      <span className="text-xs font-medium uppercase tracking-wide text-brand-navy/60">
+                      <span className="text-xs font-medium uppercase tracking-wide text-brand-navy/70">
                         {course.estimatedMinutes} min
                       </span>
                     </div>
