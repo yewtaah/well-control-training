@@ -140,7 +140,7 @@ export function ChokeDrill() {
         <h3 className="font-serif text-lg font-semibold text-brand-navy">
           Choke drill
         </h3>
-        <p className="text-xs font-medium uppercase tracking-wide text-brand-gold-dark">
+        <p className="text-xs font-medium uppercase tracking-wide text-brand-gold-ink">
           Preview
         </p>
       </div>

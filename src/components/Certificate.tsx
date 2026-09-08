@@ -138,7 +138,7 @@ export function Certificate({
           <p className="mt-4 font-serif text-lg font-semibold text-brand-navy">
             WellCommand Assurance
           </p>
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-brand-gold-dark">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-brand-gold-ink">
             Well Control Training
           </p>
 

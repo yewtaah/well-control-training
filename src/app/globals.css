@@ -7,6 +7,8 @@
   --brand-navy-dark: #071b2c;
   --brand-gold: #f0b429;
   --brand-gold-dark: #c8930f;
+  /* Gold is only legible as text on navy; this is the gold ink for light backgrounds (6.2:1 on white). */
+  --brand-gold-ink: #7d5c07;
   --brand-border: #e2e6ea;
 }
 
@@ -17,6 +19,7 @@
   --color-brand-navy-dark: var(--brand-navy-dark);
   --color-brand-gold: var(--brand-gold);
   --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-gold-ink: var(--brand-gold-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-lora);
@@ -25,6 +28,35 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* One visible focus treatment everywhere, including inside the Authenticator. */
+:focus-visible {
+  outline: 2px solid var(--brand-gold-dark);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.bg-brand-navy :focus-visible,
+[data-amplify-authenticator] :focus-visible {
+  outline-color: var(--brand-gold);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 50;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+  font-weight: 600;
 }
 
 /* Reskin the Amplify Authenticator to match the site's navy/gold brand */

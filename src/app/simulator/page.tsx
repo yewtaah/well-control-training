@@ -75,7 +75,7 @@ export default function SimulatorPage() {
                 <h3 className="font-serif text-lg font-semibold text-brand-navy">
                   {item.title}
                 </h3>
-                <span className="text-xs font-medium uppercase tracking-wide text-brand-gold-dark">
+                <span className="text-xs font-medium uppercase tracking-wide text-brand-gold-ink">
                   {item.status}
                 </span>
               </div>

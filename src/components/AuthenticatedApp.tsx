@@ -41,7 +41,7 @@ function SiteHeader() {
 
   return (
     <header className="border-b border-white/10 bg-brand-navy">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
@@ -50,11 +50,17 @@ function SiteHeader() {
             height={40}
             className="rounded-full"
           />
-          <span className="font-serif text-lg font-semibold tracking-tight text-white">
-            WellCommand Assurance Training
+          <span className="font-serif text-base font-semibold tracking-tight text-white sm:text-lg">
+            <span className="sm:hidden">WellCommand Training</span>
+            <span className="hidden sm:inline">
+              WellCommand Assurance Training
+            </span>
           </span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium text-white/80">
+        <nav
+          aria-label="Main"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-white/80"
+        >
           <Link href="/courses" className="hover:text-white">
             Curriculum
           </Link>
@@ -63,7 +69,8 @@ function SiteHeader() {
               Analytics
             </Link>
           ) : null}
-          <span className="hidden text-white/50 sm:inline">
+          <span className="hidden text-white/70 md:inline">
+            <span className="sr-only">Signed in as </span>
             {user?.signInDetails?.loginId}
           </span>
           <button
@@ -84,7 +91,9 @@ export function AuthenticatedApp({ children }: { children: ReactNode }) {
     <Authenticator components={{ Header: AuthHeader }}>
       <ProgressProvider>
         <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
+        <div id="content" className="flex flex-1 flex-col">
+          {children}
+        </div>
       </ProgressProvider>
     </Authenticator>
   );

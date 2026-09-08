@@ -19,13 +19,23 @@ export function LessonComplete({
     <button
       type="button"
       onClick={() => toggleComplete(lessonKey)}
+      aria-pressed={complete}
       className={`inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors ${
         complete
           ? "bg-emerald-600 text-white hover:bg-emerald-700"
           : "bg-brand-gold text-brand-navy hover:bg-brand-gold-dark"
       }`}
     >
-      {complete ? "Completed ✓" : "Mark lesson complete"}
+      {complete ? (
+        <>
+          <span aria-hidden className="mr-2">
+            ✓
+          </span>
+          Completed
+        </>
+      ) : (
+        "Mark lesson complete"
+      )}
     </button>
   );
 }
