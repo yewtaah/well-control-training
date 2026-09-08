@@ -53,19 +53,26 @@ body {
   --amplify-components-tabs-item-active-color: var(--brand-navy);
   --amplify-components-tabs-item-active-border-color: var(--brand-gold);
   --amplify-components-fieldcontrol-focus-border-color: var(--brand-gold);
+  --amplify-components-button-link-color: var(--brand-navy);
+  --amplify-components-button-link-hover-color: var(--brand-gold-dark);
+  --amplify-components-button-link-hover-background-color: transparent;
+  --amplify-colors-font-interactive: var(--brand-navy);
+  --amplify-components-authenticator-router-border-width: 0;
   font-family: var(--font-geist-sans);
 }
 
 [data-amplify-authenticator] [data-amplify-container] {
   width: 100%;
   max-width: 26rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(7, 27, 44, 0.35);
 }
 
 [data-amplify-authenticator] [data-amplify-router] {
-  border-radius: 1rem;
-  box-shadow: 0 20px 60px rgba(7, 27, 44, 0.35);
   border: none;
-  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* Print only the certificate itself, edge to edge. */
