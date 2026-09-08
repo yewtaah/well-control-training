@@ -42,7 +42,7 @@ export default async function LessonPage({
       >
         &larr; {course.title}
       </Link>
-      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-teal">
+      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-navy/70">
         {courseModule.title}
       </p>
       <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-brand-navy">

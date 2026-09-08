@@ -41,7 +41,7 @@ export default async function CoursePage({
                 <li key={lesson.slug}>
                   <Link
                     href={`/courses/${course.slug}/${courseModule.slug}/${lesson.slug}`}
-                    className="flex items-center justify-between rounded-lg border border-[var(--brand-border)] bg-white px-4 py-3 transition-colors hover:border-brand-teal hover:shadow-sm"
+                    className="flex items-center justify-between rounded-lg border border-[var(--brand-border)] bg-white px-4 py-3 transition-colors hover:border-brand-gold hover:shadow-sm"
                   >
                     <span className="text-sm font-medium text-brand-navy">
                       {lessonIndex + 1}. {lesson.title}

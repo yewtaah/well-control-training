@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <section className="bg-brand-navy px-6 py-20 sm:py-28">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-teal">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-gold">
             WellCommand Assurance
           </p>
           <h1 className="max-w-2xl font-serif text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
@@ -20,7 +20,7 @@ export default function Home() {
           <div>
             <Link
               href="/courses"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-brand-teal px-6 text-base font-medium text-white transition-colors hover:bg-brand-teal-dark"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-brand-gold px-6 text-base font-semibold text-brand-navy transition-colors hover:bg-brand-gold-dark"
             >
               Browse courses
             </Link>
@@ -38,7 +38,7 @@ export default function Home() {
               <Link
                 key={course.slug}
                 href={`/courses/${course.slug}`}
-                className="rounded-lg border border-[var(--brand-border)] bg-white p-6 transition-colors hover:border-brand-teal hover:shadow-sm"
+                className="rounded-lg border border-[var(--brand-border)] bg-white p-6 transition-colors hover:border-brand-gold hover:shadow-sm"
               >
                 <h3 className="font-serif text-lg font-semibold text-brand-navy">
                   {course.title}
@@ -46,7 +46,7 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-6 text-zinc-600">
                   {course.description}
                 </p>
-                <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-teal">
+                <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-navy/70">
                   {course.modules.length} modules &middot;{" "}
                   {course.modules.reduce((n, m) => n + m.lessons.length, 0)}{" "}
                   lessons

@@ -3,23 +3,53 @@
 import { Amplify } from "aws-amplify";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import outputs from "../../amplify_outputs.json";
 
 Amplify.configure(outputs);
 
+function AuthHeader() {
+  return (
+    <div className="flex flex-col items-center gap-3 bg-brand-navy px-8 pb-8 pt-10">
+      <Image
+        src="/logo.png"
+        alt="WellCommand Assurance"
+        width={72}
+        height={72}
+        className="rounded-full"
+        priority
+      />
+      <div className="text-center">
+        <p className="font-serif text-lg font-semibold text-white">
+          WellCommand Assurance
+        </p>
+        <p className="text-xs font-medium uppercase tracking-widest text-brand-gold">
+          Training Portal
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function SiteHeader() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   return (
     <header className="border-b border-white/10 bg-brand-navy">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="font-serif text-xl font-semibold tracking-tight text-white"
-        >
-          WellCommand Assurance Training
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="WellCommand Assurance"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className="font-serif text-lg font-semibold tracking-tight text-white">
+            WellCommand Assurance Training
+          </span>
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium text-white/80">
           <Link href="/courses" className="hover:text-white">
@@ -43,7 +73,7 @@ function SiteHeader() {
 
 export function AuthenticatedApp({ children }: { children: ReactNode }) {
   return (
-    <Authenticator>
+    <Authenticator components={{ Header: AuthHeader }}>
       <SiteHeader />
       <div className="flex flex-1 flex-col">{children}</div>
     </Authenticator>

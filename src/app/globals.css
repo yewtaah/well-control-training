@@ -5,8 +5,8 @@
   --foreground: #17242f;
   --brand-navy: #0b2942;
   --brand-navy-dark: #071b2c;
-  --brand-teal: #0e7c7b;
-  --brand-teal-dark: #0a5f5e;
+  --brand-gold: #f0b429;
+  --brand-gold-dark: #c8930f;
   --brand-border: #e2e6ea;
 }
 
@@ -15,8 +15,8 @@
   --color-foreground: var(--foreground);
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-dark: var(--brand-navy-dark);
-  --color-brand-teal: var(--brand-teal);
-  --color-brand-teal-dark: var(--brand-teal-dark);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-dark: var(--brand-gold-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-lora);
@@ -27,19 +27,43 @@ body {
   color: var(--foreground);
 }
 
-/* Reskin the Amplify Authenticator to match the site's navy/teal brand */
+/* Reskin the Amplify Authenticator to match the site's navy/gold brand */
 [data-amplify-authenticator] {
-  --amplify-colors-brand-primary-10: #e6f0ef;
-  --amplify-colors-brand-primary-80: var(--brand-teal);
-  --amplify-colors-brand-primary-90: var(--brand-teal-dark);
-  --amplify-colors-brand-primary-100: var(--brand-teal-dark);
-  --amplify-components-button-primary-background-color: var(--brand-teal);
-  --amplify-components-button-primary-hover-background-color: var(--brand-teal-dark);
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background: radial-gradient(
+      circle at 15% 15%,
+      rgba(240, 180, 41, 0.08),
+      transparent 45%
+    ),
+    linear-gradient(160deg, var(--brand-navy) 0%, var(--brand-navy-dark) 100%);
+
+  --amplify-colors-brand-primary-10: #fdf3df;
+  --amplify-colors-brand-primary-80: var(--brand-gold);
+  --amplify-colors-brand-primary-90: var(--brand-gold-dark);
+  --amplify-colors-brand-primary-100: var(--brand-gold-dark);
+  --amplify-components-button-primary-background-color: var(--brand-gold);
+  --amplify-components-button-primary-color: var(--brand-navy);
+  --amplify-components-button-primary-hover-background-color: var(
+    --brand-gold-dark
+  );
   --amplify-components-tabs-item-active-color: var(--brand-navy);
-  --amplify-components-tabs-item-active-border-color: var(--brand-teal);
+  --amplify-components-tabs-item-active-border-color: var(--brand-gold);
+  --amplify-components-fieldcontrol-focus-border-color: var(--brand-gold);
   font-family: var(--font-geist-sans);
 }
 
 [data-amplify-authenticator] [data-amplify-container] {
-  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(7, 27, 44, 0.35);
+  border: none;
+  overflow: hidden;
 }

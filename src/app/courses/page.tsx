@@ -16,7 +16,7 @@ export default function CoursesPage() {
           <Link
             key={course.slug}
             href={`/courses/${course.slug}`}
-            className="rounded-lg border border-[var(--brand-border)] bg-white p-6 transition-colors hover:border-brand-teal hover:shadow-sm"
+            className="rounded-lg border border-[var(--brand-border)] bg-white p-6 transition-colors hover:border-brand-gold hover:shadow-sm"
           >
             <h2 className="font-serif text-lg font-semibold text-brand-navy">
               {course.title}
@@ -24,7 +24,7 @@ export default function CoursesPage() {
             <p className="mt-2 text-sm leading-6 text-zinc-600">
               {course.description}
             </p>
-            <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-teal">
+            <p className="mt-4 text-xs font-medium uppercase tracking-wide text-brand-navy/70">
               {course.modules.length} modules &middot;{" "}
               {course.modules.reduce((n, m) => n + m.lessons.length, 0)} lessons
             </p>
