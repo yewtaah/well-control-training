@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CourseCertificateCallout } from "@/components/CertificateCallout";
 import { CourseProgressBar } from "@/components/CourseProgressBar";
 import { courses, getCourse, lessonCount } from "@/lib/curriculum";
 
@@ -143,6 +144,19 @@ export default async function CoursePage({
         >
           Take the knowledge check
         </Link>
+      </section>
+
+      <section className="mt-6 rounded-lg border border-[var(--brand-border)] bg-zinc-50 p-6">
+        <h2 className="font-serif text-lg font-semibold text-brand-navy">
+          Certificate
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-zinc-600">
+          A printable completion record, issued in your name with a reference
+          tied to your account.
+        </p>
+        <div className="mt-4">
+          <CourseCertificateCallout courseSlug={course.slug} />
+        </div>
       </section>
     </main>
   );

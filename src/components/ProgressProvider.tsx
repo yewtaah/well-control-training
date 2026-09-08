@@ -52,6 +52,9 @@ export type ProgressContextValue = {
   synced: boolean;
   traineeId: string | null;
   traineeEmail: string;
+  /** Name printed on certificates; falls back to the email local part. */
+  traineeName: string;
+  setTraineeName: (name: string) => void;
   isAdmin: boolean;
   data: ProgressData;
   setLessonCompleted: (
@@ -117,6 +120,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [synced, setSynced] = useState(false);
   const [traineeId, setTraineeId] = useState<string | null>(null);
   const [traineeEmail, setTraineeEmail] = useState("");
+  const [traineeName, setTraineeNameState] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
   const ids = useRef<Ids>({ enrollment: {}, lesson: {} });
@@ -343,6 +347,9 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     ) => {
       const now = new Date().toISOString();
       const existing = unwrap(await client.models.Trainee.get({ id }));
+      setTraineeNameState(
+        existing?.displayName ?? attributes.name ?? attributes.preferred_username ?? ""
+      );
       const sessionKey = `well-control-training:signin:${id}`;
       let firstThisSession = true;
       try {
@@ -614,12 +621,26 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     [commit, persist]
   );
 
+  /** The learner's own name for their certificate; also feeds reporting. */
+  const setTraineeName = useCallback((name: string) => {
+    const trimmed = name.trim();
+    setTraineeNameState(trimmed);
+    const client = getDataClient();
+    const id = traineeRef.current;
+    if (!client || !id) return;
+    void client.models.Trainee.update({ id, displayName: trimmed }).catch(
+      () => undefined
+    );
+  }, []);
+
   const value = useMemo<ProgressContextValue>(
     () => ({
       loaded,
       synced,
       traineeId,
       traineeEmail,
+      traineeName,
+      setTraineeName,
       isAdmin,
       data,
       setLessonCompleted,
@@ -630,6 +651,8 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       synced,
       traineeId,
       traineeEmail,
+      traineeName,
+      setTraineeName,
       isAdmin,
       data,
       setLessonCompleted,

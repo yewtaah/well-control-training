@@ -67,3 +67,33 @@ body {
   border: none;
   overflow: hidden;
 }
+
+/* Certificates print as a standalone sheet — no site chrome, no controls. */
+@media print {
+  @page {
+    size: landscape;
+    margin: 12mm;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  header,
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .certificate-sheet {
+    margin: 0 !important;
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
