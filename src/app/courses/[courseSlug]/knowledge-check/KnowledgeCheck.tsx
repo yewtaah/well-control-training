@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Quiz } from "@/lib/curriculum";
-import { useProgress } from "@/lib/useProgress";
+import { useProgress } from "@/lib/ProgressProvider";
 
 type Answers = Record<string, number | undefined>;
 
@@ -35,7 +35,8 @@ export function KnowledgeCheck({
     recordQuizResult({
       scorePercent,
       passed,
-      completedAt: new Date().toISOString(),
+      questionCount: total,
+      correctCount: correctCount,
     });
   }
 

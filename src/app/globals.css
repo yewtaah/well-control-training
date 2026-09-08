@@ -67,3 +67,22 @@ body {
   border: none;
   overflow: hidden;
 }
+
+/* Print only the certificate itself, edge to edge. */
+@media print {
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .certificate {
+    border-width: 4px;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}

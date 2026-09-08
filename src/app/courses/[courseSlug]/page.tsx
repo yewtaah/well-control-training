@@ -137,12 +137,20 @@ export default async function CoursePage({
           {course.quiz.passPercent}% to pass, and you can retake it as often as
           you like.
         </p>
-        <Link
-          href={`/courses/${course.slug}/knowledge-check`}
-          className="mt-4 inline-flex h-11 items-center justify-center rounded-full border border-brand-navy px-6 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white"
-        >
-          Take the knowledge check
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href={`/courses/${course.slug}/knowledge-check`}
+            className="inline-flex h-11 items-center justify-center rounded-full border border-brand-navy px-6 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white"
+          >
+            Take the knowledge check
+          </Link>
+          <Link
+            href={`/courses/${course.slug}/certificate`}
+            className="inline-flex h-11 items-center justify-center rounded-full border border-[var(--brand-border)] px-6 text-sm font-semibold text-zinc-600 transition-colors hover:border-brand-gold hover:text-brand-navy"
+          >
+            Certificate
+          </Link>
+        </div>
       </section>
     </main>
   );

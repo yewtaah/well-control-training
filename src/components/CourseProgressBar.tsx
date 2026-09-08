@@ -1,6 +1,6 @@
 "use client";
 
-import { useProgress } from "@/lib/useProgress";
+import { useProgress } from "@/lib/ProgressProvider";
 
 export function CourseProgressBar({
   courseSlug,

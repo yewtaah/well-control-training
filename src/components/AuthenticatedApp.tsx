@@ -3,9 +3,11 @@
 import { Amplify } from "aws-amplify";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { fetchAuthSession } from "aws-amplify/auth";
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { ProgressProvider } from "@/lib/ProgressProvider";
 import outputs from "../../amplify_outputs.json";
 
 Amplify.configure(outputs);
@@ -35,10 +37,26 @@ function AuthHeader() {
 
 function SiteHeader() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const session = await fetchAuthSession();
+        const groups =
+          (session.tokens?.idToken?.payload["cognito:groups"] as
+            | string[]
+            | undefined) ?? [];
+        setIsAdmin(groups.includes("admins"));
+      } catch {
+        setIsAdmin(false);
+      }
+    })();
+  }, []);
 
   return (
-    <header className="border-b border-white/10 bg-brand-navy">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+    <header className="border-b border-white/10 bg-brand-navy print:hidden">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
@@ -47,15 +65,23 @@ function SiteHeader() {
             height={40}
             className="rounded-full"
           />
-          <span className="font-serif text-lg font-semibold tracking-tight text-white">
+          <span className="font-serif text-base font-semibold tracking-tight text-white sm:text-lg">
             WellCommand Assurance Training
           </span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium text-white/80">
+        <nav
+          aria-label="Main"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-white/80"
+        >
           <Link href="/courses" className="hover:text-white">
             Curriculum
           </Link>
-          <span className="hidden text-white/50 sm:inline">
+          {isAdmin ? (
+            <Link href="/admin" className="hover:text-white">
+              Analytics
+            </Link>
+          ) : null}
+          <span className="hidden max-w-[16ch] truncate text-white/50 sm:inline">
             {user?.signInDetails?.loginId}
           </span>
           <button
@@ -74,8 +100,10 @@ function SiteHeader() {
 export function AuthenticatedApp({ children }: { children: ReactNode }) {
   return (
     <Authenticator components={{ Header: AuthHeader }}>
-      <SiteHeader />
-      <div className="flex flex-1 flex-col">{children}</div>
+      <ProgressProvider>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">{children}</div>
+      </ProgressProvider>
     </Authenticator>
   );
 }

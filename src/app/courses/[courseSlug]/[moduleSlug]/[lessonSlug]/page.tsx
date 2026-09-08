@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  allLessonsInOrder,
-  courses,
-  getLesson,
-  lessonKey,
-} from "@/lib/curriculum";
+import { allLessonsInOrder, courses, getLesson } from "@/lib/curriculum";
 import { LessonComplete } from "./LessonComplete";
 
 export function generateStaticParams() {
@@ -58,7 +53,8 @@ export default async function LessonPage({
       <div className="mt-10">
         <LessonComplete
           courseSlug={course.slug}
-          lessonKey={lessonKey(moduleSlug, lessonSlug)}
+          moduleSlug={moduleSlug}
+          lessonSlug={lessonSlug}
         />
       </div>
 
