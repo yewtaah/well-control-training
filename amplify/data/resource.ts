@@ -83,8 +83,10 @@ const schema = a.schema({
     .secondaryIndexes((index) => [
       index("courseSlug").sortKeys(["completedAt"]),
     ])
+    // Created when a lesson is ticked and deleted when it is un-ticked, never
+    // edited — so no update, and no reassigning the row to someone else.
     .authorization((allow) => [
-      allow.owner(),
+      allow.owner().to(["create", "read", "delete"]),
       allow.group("admins").to(["read"]),
     ]),
 
@@ -104,8 +106,9 @@ const schema = a.schema({
     .secondaryIndexes((index) => [
       index("courseSlug").sortKeys(["attemptedAt"]),
     ])
+    // Every attempt stands as recorded — a score cannot be edited after the fact.
     .authorization((allow) => [
-      allow.owner(),
+      allow.owner().to(["create", "read"]),
       allow.group("admins").to(["read"]),
     ]),
 
@@ -127,8 +130,9 @@ const schema = a.schema({
       index("type").sortKeys(["occurredAt"]),
       index("day").sortKeys(["occurredAt"]),
     ])
+    // Append-only: the audit trail is worthless if a trainee can rewrite it.
     .authorization((allow) => [
-      allow.owner(),
+      allow.owner().to(["create", "read"]),
       allow.group("admins").to(["read"]),
     ]),
 });
