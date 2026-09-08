@@ -1025,7 +1025,7 @@ export const courses: Course[] = [
             title: "Choke Drills and Simulator Practice",
             summary: "Building the response before it is needed.",
             content:
-              "Choke drills and simulator time build the timing judgement that cannot be learned from a kill sheet. An interactive choke drill exercise is planned for this course. " +
+              "Choke drills and simulator time build the timing judgement that cannot be learned from a kill sheet. Work the interactive choke drill in the Simulator section alongside this lesson. " +
               DRAFT_NOTE,
           },
         ],

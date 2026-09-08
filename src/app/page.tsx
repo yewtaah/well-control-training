@@ -97,6 +97,28 @@ export default function Home() {
             })}
           </ol>
         </section>
+
+        <section className="mt-16" aria-labelledby="simulator">
+          <div className="rounded-lg border border-[var(--brand-border)] bg-brand-navy p-8">
+            <h2
+              id="simulator"
+              className="font-serif text-2xl font-semibold tracking-tight text-white"
+            >
+              Hands-on simulator practice
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-white/70">
+              Theory tells you to hold bottomhole pressure constant. The choke
+              drill is where you find out how hard that is with a gauge that
+              lags behind every adjustment you make.
+            </p>
+            <Link
+              href="/simulator"
+              className="mt-5 inline-flex h-11 items-center justify-center rounded-full bg-brand-gold px-6 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-gold-dark"
+            >
+              Open the choke drill
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );

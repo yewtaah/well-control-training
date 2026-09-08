@@ -76,6 +76,9 @@ function SiteHeader() {
           <Link href="/courses" className="hover:text-white">
             Curriculum
           </Link>
+          <Link href="/simulator" className="hover:text-white">
+            Simulator
+          </Link>
           {isAdmin ? (
             <Link href="/admin" className="hover:text-white">
               Analytics
