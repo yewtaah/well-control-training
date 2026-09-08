@@ -20,9 +20,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Well Control Training",
+  title: "Well Command WC Training",
   description:
-    "Courses and knowledge sharing for well control and oil & gas field readiness, from WellCommand Assurance.",
+    "Well control training for all critical safety roles, office and field, from WellCommand Assurance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

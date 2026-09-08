@@ -53,7 +53,7 @@ function SiteHeader() {
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium text-white/80">
           <Link href="/courses" className="hover:text-white">
-            Courses
+            Curriculum
           </Link>
           <span className="hidden text-white/50 sm:inline">
             {user?.signInDetails?.loginId}
