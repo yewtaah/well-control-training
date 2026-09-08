@@ -1,14 +1,13 @@
 "use client";
 
-import { Amplify } from "aws-amplify";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import outputs from "../../amplify_outputs.json";
-
-Amplify.configure(outputs);
+import { ProgressProvider } from "@/components/ProgressProvider";
+// Configures Amplify as a side effect of the import.
+import "@/lib/amplifyClient";
 
 function AuthHeader() {
   return (
@@ -74,8 +73,10 @@ function SiteHeader() {
 export function AuthenticatedApp({ children }: { children: ReactNode }) {
   return (
     <Authenticator components={{ Header: AuthHeader }}>
-      <SiteHeader />
-      <div className="flex flex-1 flex-col">{children}</div>
+      <ProgressProvider>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">{children}</div>
+      </ProgressProvider>
     </Authenticator>
   );
 }
