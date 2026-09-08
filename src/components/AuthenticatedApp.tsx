@@ -5,7 +5,10 @@ import "@aws-amplify/ui-react/styles.css";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ProgressProvider } from "@/components/ProgressProvider";
+import {
+  ProgressProvider,
+  useProgressContext,
+} from "@/components/ProgressProvider";
 // Configures Amplify as a side effect of the import.
 import "@/lib/amplifyClient";
 
@@ -34,6 +37,7 @@ function AuthHeader() {
 
 function SiteHeader() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const { isAdmin } = useProgressContext();
 
   return (
     <header className="border-b border-white/10 bg-brand-navy">
@@ -54,6 +58,11 @@ function SiteHeader() {
           <Link href="/courses" className="hover:text-white">
             Curriculum
           </Link>
+          {isAdmin ? (
+            <Link href="/admin" className="hover:text-white">
+              Analytics
+            </Link>
+          ) : null}
           <span className="hidden text-white/50 sm:inline">
             {user?.signInDetails?.loginId}
           </span>
