@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProgrammeCertificateCallout } from "@/components/CertificateCallout";
 import { CourseProgressBar } from "@/components/CourseProgressBar";
 import { courses, lessonCount, program } from "@/lib/curriculum";
 
@@ -51,6 +52,19 @@ export default function CoursesPage() {
           );
         })}
       </ol>
+
+      <section className="mt-10 rounded-lg border border-[var(--brand-border)] bg-zinc-50 p-6">
+        <h2 className="font-serif text-lg font-semibold text-brand-navy">
+          Programme certificate
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-zinc-600">
+          Complete all {courses.length} courses and pass every knowledge check to
+          earn a certificate for the full programme.
+        </p>
+        <div className="mt-4">
+          <ProgrammeCertificateCallout />
+        </div>
+      </section>
     </main>
   );
 }

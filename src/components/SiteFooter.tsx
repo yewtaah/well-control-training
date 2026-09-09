@@ -1,6 +1,6 @@
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61583311850224";
 const LINKEDIN_URL =
-  "https://www.linkedin.com/in/chris-scarborough-937b5812a/";
+  "https://www.linkedin.com/company/well-command-assurance/?viewAsMember=true";
 
 export function SiteFooter() {
   return (
@@ -12,7 +12,7 @@ export function SiteFooter() {
           </p>
           <p>1708 Spring Green Blvd Ste. 120 #131</p>
           <a href="tel:+17134444723" className="hover:text-white">
-            +1.713-444-4723
+            +1 713-444-4723
           </a>
           <p>Available 24/7</p>
         </div>

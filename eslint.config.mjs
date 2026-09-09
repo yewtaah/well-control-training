@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated CDK output from `ampx sandbox` — not our source.
+    ".amplify/**",
   ]),
 ]);
 

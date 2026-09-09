@@ -1,142 +1,72 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo } from "react";
+import {
+  useProgressContext,
+  type QuizAttemptInput,
+} from "@/components/ProgressProvider";
+import type { QuizResult } from "@/lib/progressCache";
+
+export type { QuizResult };
 
 /**
- * Progress is held in localStorage for now, so it is per-browser rather than
- * per-account. Issue #5 moves this onto Amplify Data.
+ * Per-course view of the signed-in learner's progress. The data lives on their
+ * account (Amplify Data), with a local mirror so the courseware keeps working
+ * offline — see ProgressProvider.
  */
-
-function progressKey(courseSlug: string) {
-  return `well-control-training:progress:${courseSlug}`;
-}
-
-function quizKey(courseSlug: string) {
-  return `well-control-training:quiz:${courseSlug}`;
-}
-
-export type QuizResult = {
-  scorePercent: number;
-  passed: boolean;
-  completedAt: string;
-};
-
-function readCompleted(courseSlug: string): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(progressKey(courseSlug));
-    return raw ? (JSON.parse(raw) as string[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-function readQuizResult(courseSlug: string): QuizResult | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = window.localStorage.getItem(quizKey(courseSlug));
-    return raw ? (JSON.parse(raw) as QuizResult) : null;
-  } catch {
-    return null;
-  }
-}
-
-function subscribe(onChange: () => void) {
-  window.addEventListener("storage", onChange);
-  return () => window.removeEventListener("storage", onChange);
-}
-
-function notify() {
-  window.dispatchEvent(new StorageEvent("storage"));
-}
-
 export function useProgress(courseSlug: string) {
-  const completedList = useSyncExternalStore(
-    subscribe,
-    () => readCompleted(courseSlug).join(","),
-    () => ""
-  );
-  const quizJson = useSyncExternalStore(
-    subscribe,
-    () => {
-      try {
-        return window.localStorage.getItem(quizKey(courseSlug)) ?? "";
-      } catch {
-        return "";
-      }
-    },
-    () => ""
-  );
-  const loaded = useSyncExternalStore(
-    subscribe,
-    () => true,
-    () => false
-  );
+  const {
+    data,
+    loaded,
+    synced,
+    setLessonCompleted,
+    recordQuizAttempt,
+  } = useProgressContext();
 
   const completed = useMemo(
-    () => new Set(completedList ? completedList.split(",") : []),
-    [completedList]
+    () => new Set(data.completions[courseSlug] ?? []),
+    [data.completions, courseSlug]
   );
 
-  const quizResult = useMemo<QuizResult | null>(() => {
-    if (!quizJson) return null;
-    try {
-      return JSON.parse(quizJson) as QuizResult;
-    } catch {
-      return null;
-    }
-  }, [quizJson]);
+  const quizResult = data.quiz[courseSlug] ?? null;
 
-  const isComplete = useCallback((key: string) => completed.has(key), [
-    completed,
-  ]);
+  const isComplete = useCallback(
+    (key: string) => completed.has(key),
+    [completed]
+  );
 
   const toggleComplete = useCallback(
     (key: string) => {
-      const current = new Set(readCompleted(courseSlug));
-      if (current.has(key)) {
-        current.delete(key);
-      } else {
-        current.add(key);
-      }
-      try {
-        window.localStorage.setItem(
-          progressKey(courseSlug),
-          JSON.stringify([...current])
-        );
-      } catch {
-        // ignore write failures (private browsing, storage disabled)
-      }
-      notify();
+      const [moduleSlug, lessonSlug] = key.split("/");
+      if (!moduleSlug || !lessonSlug) return;
+      setLessonCompleted(
+        courseSlug,
+        moduleSlug,
+        lessonSlug,
+        !completed.has(key)
+      );
     },
-    [courseSlug]
+    [completed, courseSlug, setLessonCompleted]
   );
 
   const recordQuizResult = useCallback(
-    (result: QuizResult) => {
-      const previous = readQuizResult(courseSlug);
-      // Keep the learner's best attempt.
-      if (!previous || result.scorePercent > previous.scorePercent) {
-        try {
-          window.localStorage.setItem(
-            quizKey(courseSlug),
-            JSON.stringify(result)
-          );
-        } catch {
-          // ignore write failures
-        }
-      }
-      notify();
-    },
-    [courseSlug]
+    (attempt: QuizAttemptInput) => recordQuizAttempt(courseSlug, attempt),
+    [courseSlug, recordQuizAttempt]
   );
 
   return {
     completed,
     loaded,
+    synced,
     isComplete,
     toggleComplete,
     quizResult,
     recordQuizResult,
   };
+}
+
+/** Progress across the whole programme, for dashboards and certificates. */
+export function useProgramProgress() {
+  const { data, loaded, synced } = useProgressContext();
+  return { data, loaded, synced };
 }

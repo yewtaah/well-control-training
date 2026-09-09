@@ -32,6 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-[var(--foreground)]">
+        <a href="#content" className="skip-link">
+          Skip to content
+        </a>
         <AuthenticatedApp>{children}</AuthenticatedApp>
         <SiteFooter />
       </body>

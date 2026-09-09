@@ -97,6 +97,33 @@ export default function Home() {
             })}
           </ol>
         </section>
+
+        <section className="mt-16" aria-labelledby="simulator">
+          <div className="rounded-lg border border-[var(--brand-border)] bg-zinc-50 p-6 sm:p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <h2
+                id="simulator"
+                className="font-serif text-2xl font-semibold tracking-tight text-brand-navy"
+              >
+                Simulator practice
+              </h2>
+              <span className="rounded-full border border-brand-gold bg-brand-gold/10 px-3 py-1 text-xs font-medium text-brand-navy">
+                Coming soon
+              </span>
+            </div>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
+              Theory tells you what a kick is; the response has to be rehearsed.
+              A choke drill preview is live now, with kick detection and kill
+              sheet drills to follow.
+            </p>
+            <Link
+              href="/simulator"
+              className="mt-5 inline-flex h-11 items-center justify-center rounded-full border border-brand-navy px-6 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white"
+            >
+              Try the choke drill
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );

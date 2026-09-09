@@ -34,8 +34,9 @@ export function KnowledgeCheck({
     setSubmitted(true);
     recordQuizResult({
       scorePercent,
+      correctCount,
+      questionCount: total,
       passed,
-      completedAt: new Date().toISOString(),
     });
   }
 
