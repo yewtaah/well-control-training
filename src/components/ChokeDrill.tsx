@@ -119,8 +119,10 @@ export function ChokeDrill() {
   }, [running]);
 
   const status = statusFor(pressure);
-  const traceMin = 200;
-  const traceMax = 1100;
+  // A window around the target, not the choke's full range — a ±25 psi band
+  // drawn across 900 psi of scale is a hairline nobody can read.
+  const traceMin = 400;
+  const traceMax = 900;
   const points = trace
     .map((value, index) => {
       const x = (index / Math.max(1, TRACE_SAMPLES - 1)) * 100;
@@ -191,44 +193,51 @@ export function ChokeDrill() {
       </dl>
 
       <figure className="mt-6">
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          className="h-40 w-full rounded border border-[var(--brand-border)] bg-zinc-50"
-          role="img"
-          aria-label={`Casing pressure trace. Currently ${Math.round(
-            pressure
-          )} psi against a target of ${TARGET_PSI} psi.`}
-        >
-          <rect
-            x="0"
-            y={bandTop}
-            width="100"
-            height={Math.max(0, bandBottom - bandTop)}
-            className="fill-emerald-100"
-          />
-          <line
-            x1="0"
-            x2="100"
-            y1={(bandTop + bandBottom) / 2}
-            y2={(bandTop + bandBottom) / 2}
-            className="stroke-emerald-500"
-            strokeWidth="0.4"
-            strokeDasharray="2 2"
-            vectorEffect="non-scaling-stroke"
-          />
-          {points ? (
-            <polyline
-              points={points}
-              fill="none"
-              className="stroke-brand-navy"
-              strokeWidth="2"
-              strokeLinejoin="round"
-              strokeLinecap="round"
+        <div className="flex items-stretch gap-2">
+          <div className="flex w-10 shrink-0 flex-col justify-between py-0.5 text-right text-[0.65rem] tabular-nums text-zinc-400">
+            <span>{traceMax}</span>
+            <span className="text-emerald-700">{TARGET_PSI}</span>
+            <span>{traceMin}</span>
+          </div>
+            <svg
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="h-40 w-full rounded border border-[var(--brand-border)] bg-zinc-50"
+            role="img"
+            aria-label={`Casing pressure trace. Currently ${Math.round(
+              pressure
+            )} psi against a target of ${TARGET_PSI} psi.`}
+          >
+            <rect
+              x="0"
+              y={bandTop}
+              width="100"
+              height={Math.max(0, bandBottom - bandTop)}
+              className="fill-emerald-100"
+            />
+            <line
+              x1="0"
+              x2="100"
+              y1={(bandTop + bandBottom) / 2}
+              y2={(bandTop + bandBottom) / 2}
+              className="stroke-emerald-500"
+              strokeWidth="0.4"
+              strokeDasharray="2 2"
               vectorEffect="non-scaling-stroke"
             />
-          ) : null}
-        </svg>
+            {points ? (
+              <polyline
+                points={points}
+                fill="none"
+                className="stroke-brand-navy"
+                strokeWidth="2"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            ) : null}
+          </svg>
+        </div>
         <figcaption className={`mt-2 text-sm font-medium ${status.tone}`}>
           {status.label} &mdash;{" "}
           <span className="font-normal text-zinc-600">{status.hint}</span>

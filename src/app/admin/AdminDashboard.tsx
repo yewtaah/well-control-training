@@ -31,6 +31,7 @@ type Trainee = {
   email: string;
   displayName?: string | null;
   company?: string | null;
+  role?: string | null;
   signedUpAt: string;
   lastSeenAt?: string | null;
 };
@@ -68,6 +69,9 @@ function relativeTime(iso: string): string {
   if (hours < 24) return `${hours}h ago`;
   return `${Math.round(hours / 24)}d ago`;
 }
+
+/** Tallest a bar in the seven-day chart can draw. */
+const BAR_MAX_PX = 120;
 
 const ACTIVITY_LABELS: Record<string, string> = {
   SIGN_UP: "signed up",
@@ -202,12 +206,17 @@ export function AdminDashboard() {
     const traineeById = new Map(
       trainees.map((trainee) => [trainee.id, trainee])
     );
+    // Staff accounts have a record too, but they are not the trainee headcount.
+    const learners = trainees.filter((trainee) => trainee.role !== "admin");
+
+    const learnerIds = new Set(learners.map((trainee) => trainee.id));
 
     return {
-      traineeCount: trainees.length,
-      newThisWeek: trainees.filter((trainee) => trainee.signedUpAt >= weekStart)
+      traineeCount: learners.length,
+      newThisWeek: learners.filter((trainee) => trainee.signedUpAt >= weekStart)
         .length,
-      activeThisWeek: activeTrainees.size,
+      activeThisWeek: [...activeTrainees].filter((id) => learnerIds.has(id))
+        .length,
       lessonsThisWeek,
       checksThisWeek,
       byDay: days.map((day) => ({ day, count: byDay.get(day) ?? 0 })),
@@ -300,19 +309,21 @@ export function AdminDashboard() {
         <h2 className="font-serif text-lg font-semibold text-brand-navy">
           Activity, last 7 days
         </h2>
-        <div className="mt-5 flex h-40 items-end gap-2">
+        <div className="mt-5 flex items-end gap-2">
           {metrics.byDay.map((entry) => (
             <div
               key={entry.day}
-              className="flex flex-1 flex-col items-center justify-end gap-2"
+              className="flex flex-1 flex-col items-center gap-2"
             >
               <span className="text-xs font-medium tabular-nums text-zinc-600">
                 {entry.count}
               </span>
-              <div
-                className="w-full rounded-t bg-brand-gold"
+              {/* Bar heights are in pixels: a percentage height would have no
+                  definite parent to resolve against and collapse to nothing. */}
+              <span
+                className="mx-auto w-full max-w-12 rounded-t bg-brand-gold"
                 style={{
-                  height: `${Math.max(2, (entry.count / peakDay) * 100)}%`,
+                  height: `${Math.max(2, Math.round((entry.count / peakDay) * BAR_MAX_PX))}px`,
                 }}
                 role="img"
                 aria-label={`${entry.count} events on ${entry.day}`}

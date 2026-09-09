@@ -343,7 +343,8 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       client: DataClient,
       id: string,
       attributes: Record<string, string | undefined>,
-      fallbackEmail: string
+      fallbackEmail: string,
+      isStaff: boolean
     ) => {
       const now = new Date().toISOString();
       const existing = unwrap(await client.models.Trainee.get({ id }));
@@ -366,6 +367,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
             displayName: attributes.name ?? attributes.preferred_username,
             company: attributes["custom:company"],
             jobTitle: attributes["custom:jobTitle"],
+            role: isStaff ? "admin" : "trainee",
             signedUpAt: now,
             lastSeenAt: now,
             signInCount: 1,
@@ -376,6 +378,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         unwrap(
           await client.models.Trainee.update({
             id,
+            role: isStaff ? "admin" : "trainee",
             lastSeenAt: now,
             signInCount: (existing.signInCount ?? 0) + 1,
           })
@@ -485,7 +488,8 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     try {
       const session = await fetchAuthSession();
       const groups = session.tokens?.accessToken?.payload?.["cognito:groups"];
-      setIsAdmin(Array.isArray(groups) && groups.includes("admins"));
+      const isStaff = Array.isArray(groups) && groups.includes("admins");
+      setIsAdmin(isStaff);
 
       const attributes = await fetchUserAttributes().catch(
         () => ({}) as Record<string, string | undefined>
@@ -493,7 +497,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       const email = attributes.email ?? user.signInDetails?.loginId ?? "";
       setTraineeEmail(email);
 
-      await ensureTrainee(client, id, attributes, email);
+      await ensureTrainee(client, id, attributes, email, isStaff);
 
       const [enrollments, lessons, attempts] = await Promise.all([
         listAll((nextToken) => client.models.Enrollment.list({ nextToken })),
