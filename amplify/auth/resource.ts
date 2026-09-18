@@ -6,7 +6,7 @@ export const auth = defineAuth({
   },
   senders: {
     email: {
-      fromEmail: "support@doctamer.net",
+      fromEmail: "noreply@auth.bateman.link",
       fromName: "Well Control Training",
     },
   },
