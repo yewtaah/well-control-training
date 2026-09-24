@@ -245,7 +245,7 @@ export function AdminDashboard() {
         </h1>
         <p className="mt-3 text-base leading-7 text-zinc-600">
           This dashboard is limited to the <code>admins</code> group. Ask
-          WellCommand Assurance to add your account if you need access.
+          well command  Assurance to add your account if you need access.
         </p>
         <Link
           href="/courses"

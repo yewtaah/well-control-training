@@ -18,7 +18,7 @@ export function ProgrammeCertificate() {
       scope="programme"
       title={program.title}
       subtitle={`All ${completion.coursesTotal} courses · full programme`}
-      statement="has completed every course in the programme and passed each knowledge check, meeting the WellCommand Assurance standard for"
+      statement="has completed every course in the programme and passed each knowledge check, meeting the well command  Assurance standard for"
       earned={completion.complete}
       completedAt={completion.completedAt}
       outstanding={outstanding}

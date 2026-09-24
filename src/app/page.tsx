@@ -11,7 +11,7 @@ export default function Home() {
       <section className="bg-brand-navy px-6 py-20 sm:py-24">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-gold">
-            WellCommand Assurance
+            well command  Assurance
           </p>
           <h1 className="max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
             {program.title}

@@ -130,13 +130,13 @@ export function Certificate({
         <div className="flex flex-col items-center border border-brand-gold px-8 py-12 text-center sm:px-14">
           <Image
             src="/logo.png"
-            alt="WellCommand Assurance"
+            alt="well command  Assurance"
             width={64}
             height={64}
             className="rounded-full"
           />
           <p className="mt-4 font-serif text-lg font-semibold text-brand-navy">
-            WellCommand Assurance
+            well command  Assurance
           </p>
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-brand-gold-ink">
             Well Control Training
@@ -189,7 +189,7 @@ export function Certificate({
       <p className="print-hide mt-4 text-xs text-zinc-500">
         Issued against {traineeEmail || "your account"}. The reference above is
         tied to your account and this course, and can be quoted back to
-        WellCommand Assurance to verify the record.
+        well command  Assurance to verify the record.
       </p>
     </main>
   );

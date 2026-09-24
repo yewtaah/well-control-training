@@ -50,7 +50,7 @@ export const program = {
 };
 
 const DRAFT_NOTE =
-  "This lesson is an outline placeholder. Final content is authored by WellCommand Assurance.";
+  "This lesson is an outline placeholder. Final content is authored by well command  Assurance.";
 
 export const courses: Course[] = [
   {

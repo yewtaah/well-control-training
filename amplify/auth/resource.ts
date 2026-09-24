@@ -10,6 +10,6 @@ export const auth = defineAuth({
       fromName: "Well Control Training",
     },
   },
-  /** WellCommand Assurance staff — read access to every trainee's records. */
+  /** well command  Assurance staff — read access to every trainee's records. */
   groups: ["admins"],
 });

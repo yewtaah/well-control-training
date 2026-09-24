@@ -35,7 +35,7 @@ drill is a React component with no backend and no licence to renew.
 
 If a client needs certification-grade simulator hours, that is a referral to a
 partner (option C) rather than something the platform should try to replicate.
-Option B only becomes worth its cost if WellCommand Assurance starts delivering
+Option B only becomes worth its cost if well command  Assurance starts delivering
 accredited courses itself.
 
 ## Proposed drill order

@@ -17,7 +17,7 @@ function AuthHeader() {
     <div className="flex flex-col items-center gap-3 bg-brand-navy px-8 pb-8 pt-10">
       <Image
         src="/logo.png"
-        alt="WellCommand Assurance"
+        alt="well command  Assurance"
         width={72}
         height={72}
         className="rounded-full"
@@ -25,7 +25,7 @@ function AuthHeader() {
       />
       <div className="text-center">
         <p className="font-serif text-lg font-semibold text-white">
-          WellCommand Assurance
+          well command  Assurance
         </p>
         <p className="text-xs font-medium uppercase tracking-widest text-brand-gold">
           Training Portal
@@ -45,15 +45,15 @@ function SiteHeader() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="WellCommand Assurance"
+            alt="well command  Assurance"
             width={40}
             height={40}
             className="rounded-full"
           />
           <span className="font-serif text-base font-semibold tracking-tight text-white sm:text-lg">
-            <span className="sm:hidden">WellCommand Training</span>
+            <span className="sm:hidden">well command  Training</span>
             <span className="hidden sm:inline">
-              WellCommand Assurance Training
+              well command  Assurance Training
             </span>
           </span>
         </Link>
