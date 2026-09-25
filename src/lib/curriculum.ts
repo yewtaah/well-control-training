@@ -44,13 +44,13 @@ export const program = {
   title: "Well Command WC Training",
   audience: "Designed for all critical safety roles — office and field.",
   summary:
-    "The Well Command well control training course covers pressure fundamentals, kick detection, shut-in procedures, kill methods, equipment operation, risk management, barrier integrity, and hands-on simulator practice. These topics ensure personnel can prevent, detect, and respond to well control events safely and effectively.",
+    "The Well Command Well Control training course covers pressure fundamentals, kick detection, shut-in procedures, kill methods, equipment operation, risk management, barrier integrity, and hands-on simulator practice. These topics ensure personnel can prevent, detect, and respond to Well Control events safely and effectively.",
   objective:
-    "The objective of the training is to equip individuals to comprehend the basics of well control theory to facilitate and improve safety at the well. A well control incident detected early and properly responded to will be kept small, mitigating the complexities involved in large kicks.",
+    "The objective of the training is to equip individuals to comprehend the basics of Well Control theory to facilitate and improve safety at the well. A Well Control incident detected early and properly responded to will be kept small, mitigating the complexities involved in large kicks.",
 };
 
 const DRAFT_NOTE =
-  "This lesson is an outline placeholder. Final content is authored by well command  Assurance.";
+  "This lesson is an outline placeholder. Final content is authored by Well Command  Assurance.";
 
 export const courses: Course[] = [
   {
@@ -58,15 +58,15 @@ export const courses: Course[] = [
     order: 1,
     title: "Course Introduction",
     description:
-      "Why well control training matters, the principles and industry requirements behind it, and how responsibility and barriers are structured.",
+      "Why Well Control training matters, the principles and industry requirements behind it, and how responsibility and barriers are structured.",
     estimatedMinutes: 35,
     status: "draft",
     objectives: [
-      "Explain the purpose and objectives of well control training",
-      "Describe the well control principles and industry requirements that govern operations",
-      "Apply ALARP thinking to well control decisions",
-      "Identify the roles and responsibilities held during a well control event",
-      "Distinguish primary, secondary, and tertiary well control barriers",
+      "Explain the purpose and objectives of Well Control training",
+      "Describe the Well Control principles and industry requirements that govern operations",
+      "Apply ALARP thinking to Well Control decisions",
+      "Identify the roles and responsibilities held during a Well Control event",
+      "Distinguish primary, secondary, and tertiary Well Control barriers",
     ],
     prerequisites: [],
     modules: [
@@ -79,15 +79,15 @@ export const courses: Course[] = [
             title: "Purpose and Objectives of Well Control Training",
             summary: "What the training is for and who it is for.",
             content:
-              "Well control training exists so that every person connected to a well — office and field alike — can recognise when the well is trying to tell them something and knows what to do about it. The measure of a well control programme is not how well a large kick is fought, but how rarely a kick is allowed to become large. " +
+              "Well Control training exists so that every person connected to a well — office and field alike — can recognise when the well is trying to tell them something and knows what to do about it. The measure of a Well Control programme is not how well a large kick is fought, but how rarely a kick is allowed to become large. " +
               DRAFT_NOTE,
           },
           {
             slug: "principles-and-industry-requirements",
             title: "Well Control Principles and Industry Requirements",
-            summary: "The regulatory and industry framework around well control.",
+            summary: "The regulatory and industry framework around Well Control.",
             content:
-              "Well control practice sits inside a framework of regulator requirements, operator standards, and industry guidance that set out competency, equipment testing, and procedural expectations. This lesson introduces that framework and where to find the requirements that apply to a given operation. " +
+              "Well Control practice sits inside a framework of regulator requirements, operator standards, and industry guidance that set out competency, equipment testing, and procedural expectations. This lesson introduces that framework and where to find the requirements that apply to a given operation. " +
               DRAFT_NOTE,
           },
           {
@@ -95,7 +95,7 @@ export const courses: Course[] = [
             title: "ALARP Principles",
             summary: "Reducing risk as low as reasonably practicable.",
             content:
-              "ALARP — as low as reasonably practicable — is the principle that risk must be reduced until the cost of further reduction is grossly disproportionate to the benefit gained. It is introduced here as a way of thinking about well control decisions, and applied in detail in the Barrier Management course. " +
+              "ALARP — as low as reasonably practicable — is the principle that risk must be reduced until the cost of further reduction is grossly disproportionate to the benefit gained. It is introduced here as a way of thinking about Well Control decisions, and applied in detail in the Barrier Management course. " +
               DRAFT_NOTE,
           },
         ],
@@ -109,7 +109,7 @@ export const courses: Course[] = [
             title: "Roles and Responsibilities During Well Control Operations",
             summary: "Who does what when the well starts flowing.",
             content:
-              "Every position on and off the rig floor has a defined role during a well control event, from the driller who shuts the well in to the office roles who support the kill decision. Clarity about those roles before an event is what allows the response to be fast and unambiguous during one. " +
+              "Every position on and off the rig floor has a defined role during a Well Control event, from the driller who shuts the well in to the office roles who support the kill decision. Clarity about those roles before an event is what allows the response to be fast and unambiguous during one. " +
               DRAFT_NOTE,
           },
           {
@@ -128,7 +128,7 @@ export const courses: Course[] = [
       questions: [
         {
           id: "q1",
-          prompt: "What is the primary well control barrier?",
+          prompt: "What is the primary Well Control barrier?",
           options: [
             "The BOP stack",
             "The hydrostatic pressure of the drilling fluid column",
@@ -158,8 +158,8 @@ export const courses: Course[] = [
             "The stated objective of this training is best described as:",
           options: [
             "Certifying personnel to operate a BOP stack unsupervised",
-            "Equipping individuals to comprehend well control theory so incidents are detected early and kept small",
-            "Replacing the need for a rig-specific well control plan",
+            "Equipping individuals to comprehend Well Control theory so incidents are detected early and kept small",
+            "Replacing the need for a rig-specific Well Control plan",
             "Training office staff only",
           ],
           answerIndex: 1,
@@ -174,7 +174,7 @@ export const courses: Course[] = [
     order: 2,
     title: "Pressure Fundamentals",
     description:
-      "The pressure relationships that govern every well control decision, from hydrostatic head to MAASP.",
+      "The pressure relationships that govern every Well Control decision, from hydrostatic head to MAASP.",
     estimatedMinutes: 40,
     status: "draft",
     objectives: [
@@ -195,7 +195,7 @@ export const courses: Course[] = [
             title: "Hydrostatic Pressure",
             summary: "The pressure exerted by the fluid column.",
             content:
-              "Hydrostatic pressure is the pressure exerted at any depth by the weight of the fluid column above it, and depends on fluid density and true vertical depth — not on hole size or measured depth. It is the primary barrier, and every well control calculation starts from it. " +
+              "Hydrostatic pressure is the pressure exerted at any depth by the weight of the fluid column above it, and depends on fluid density and true vertical depth — not on hole size or measured depth. It is the primary barrier, and every Well Control calculation starts from it. " +
               DRAFT_NOTE,
           },
           {
@@ -211,7 +211,7 @@ export const courses: Course[] = [
             title: "Bottomhole Pressure Concepts",
             summary: "How BHP is built up and what changes it.",
             content:
-              "Bottomhole pressure is the sum of the hydrostatic head plus any applied surface pressure plus annular friction losses when circulating. Understanding which of those terms is under the crew's control at any moment is the basis of constant-bottomhole-pressure well control. " +
+              "Bottomhole pressure is the sum of the hydrostatic head plus any applied surface pressure plus annular friction losses when circulating. Understanding which of those terms is under the crew's control at any moment is the basis of constant-bottomhole-pressure Well Control. " +
               DRAFT_NOTE,
           },
         ],
@@ -302,9 +302,9 @@ export const courses: Course[] = [
     status: "draft",
     objectives: [
       "Describe mud weight and density control in practice",
-      "Explain how rheology and gel strengths affect well control",
+      "Explain how rheology and gel strengths affect Well Control",
       "Recognise gas-cut mud and other contamination and judge its significance",
-      "Use pit volume and trip tank monitoring as well control instruments",
+      "Use pit volume and trip tank monitoring as Well Control instruments",
       "Identify mud system limitations that constrain the operation",
     ],
     prerequisites: ["pressure-fundamentals"],
@@ -324,9 +324,9 @@ export const courses: Course[] = [
           {
             slug: "rheology-and-gel-strengths",
             title: "Rheology and Gel Strengths",
-            summary: "Flow behaviour and its well control consequences.",
+            summary: "Flow behaviour and its Well Control consequences.",
             content:
-              "Rheology governs annular friction and therefore ECD, while gel strengths govern the pressure required to break circulation after the pumps have been off. Both have direct well control consequences on start-up and during a kill. " +
+              "Rheology governs annular friction and therefore ECD, while gel strengths govern the pressure required to break circulation after the pumps have been off. Both have direct Well Control consequences on start-up and during a kill. " +
               DRAFT_NOTE,
           },
         ],
@@ -381,7 +381,7 @@ export const courses: Course[] = [
         },
         {
           id: "q2",
-          prompt: "Gel strength most directly affects well control by determining:",
+          prompt: "Gel strength most directly affects Well Control by determining:",
           options: [
             "The pressure required to break circulation after the pumps are off",
             "The formation pressure",
@@ -539,7 +539,7 @@ export const courses: Course[] = [
             title: "Flow Checks",
             summary: "When to flow check and how to read the result.",
             content:
-              "A flow check stops the pumps and observes whether the well continues to flow. When it is performed, how long it is held, and how the result is interpreted are all defined in the rig's well control procedures. " +
+              "A flow check stops the pumps and observes whether the well continues to flow. When it is performed, how long it is held, and how the result is interpreted are all defined in the rig's Well Control procedures. " +
               DRAFT_NOTE,
           },
           {
@@ -645,7 +645,7 @@ export const courses: Course[] = [
             title: "Hard and Soft Shut-In",
             summary: "Steps to safely shut in the well after detecting a kick.",
             content:
-              "Once a kick is confirmed, the well must be shut in immediately to prevent further influx. In a soft shut-in, the choke line valve is opened first, the annular or pipe ram preventer is closed, and then the choke is closed gradually — this method reduces surge pressure on the formation and is generally preferred on rigs equipped with an automated choke. In a hard shut-in, the preventer is closed first with the choke already closed, minimizing total mud loss and kick volume, but subjecting the wellbore and surface equipment to a sharper pressure spike. The choice between methods is typically pre-determined in the rig's well control plan based on formation strength and equipment capability. After shut-in, the driller records the stabilized shut-in drill pipe pressure (SIDPP), shut-in casing pressure (SICP), and pit gain — these three readings drive every subsequent kill calculation.",
+              "Once a kick is confirmed, the well must be shut in immediately to prevent further influx. In a soft shut-in, the choke line valve is opened first, the annular or pipe ram preventer is closed, and then the choke is closed gradually — this method reduces surge pressure on the formation and is generally preferred on rigs equipped with an automated choke. In a hard shut-in, the preventer is closed first with the choke already closed, minimizing total mud loss and kick volume, but subjecting the wellbore and surface equipment to a sharper pressure spike. The choice between methods is typically pre-determined in the rig's Well Control plan based on formation strength and equipment capability. After shut-in, the driller records the stabilized shut-in drill pipe pressure (SIDPP), shut-in casing pressure (SICP), and pit gain — these three readings drive every subsequent kill calculation.",
           },
           {
             slug: "spacing-out-and-closure-sequence",
@@ -1198,7 +1198,7 @@ export const courses: Course[] = [
     order: 11,
     title: "Barrier Management & Risk Mitigation",
     description:
-      "Barrier philosophy, verification, human factors, and formal risk assessment applied to well control.",
+      "Barrier philosophy, verification, human factors, and formal risk assessment applied to Well Control.",
     estimatedMinutes: 35,
     status: "draft",
     objectives: [
@@ -1206,7 +1206,7 @@ export const courses: Course[] = [
       "Describe how barriers are verified and monitored",
       "Identify human factors that degrade barriers over time",
       "Participate in HAZID and HAZOP assessments",
-      "Apply ALARP to well control risk decisions",
+      "Apply ALARP to Well Control risk decisions",
     ],
     prerequisites: ["course-introduction", "well-control-equipment"],
     modules: [
@@ -1249,7 +1249,7 @@ export const courses: Course[] = [
             title: "Operational Risk Assessment: HAZID and HAZOP",
             summary: "Structured hazard identification.",
             content:
-              "HAZID identifies the hazards present in an operation; HAZOP works systematically through deviations from design intent. Both feed the well control plan by establishing what could defeat a barrier and what safeguard answers it. " +
+              "HAZID identifies the hazards present in an operation; HAZOP works systematically through deviations from design intent. Both feed the Well Control plan by establishing what could defeat a barrier and what safeguard answers it. " +
               DRAFT_NOTE,
           },
           {
@@ -1257,7 +1257,7 @@ export const courses: Course[] = [
             title: "ALARP in Practice",
             summary: "Applying the principle to real decisions.",
             content:
-              "Applying ALARP to well control means demonstrating that the safeguards in place are proportionate to the risk, and documenting the reasoning when a further safeguard is judged grossly disproportionate. " +
+              "Applying ALARP to Well Control means demonstrating that the safeguards in place are proportionate to the risk, and documenting the reasoning when a further safeguard is judged grossly disproportionate. " +
               DRAFT_NOTE,
           },
         ],
@@ -1298,7 +1298,7 @@ export const courses: Course[] = [
           options: [
             "Only applies offshore",
             "Works systematically through deviations from design intent",
-            "Replaces the well control plan",
+            "Replaces the Well Control plan",
             "Is performed only after an incident",
           ],
           answerIndex: 1,

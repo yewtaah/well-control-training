@@ -27,7 +27,7 @@ const TRAINEES = [
   {
     email: "demo.trainee@example.com",
     displayName: "Demo Trainee",
-    company: "well command  Assurance",
+    company: "Well Command  Assurance",
     jobTitle: "Drilling Supervisor",
     /** Courses finished outright (lessons + a passing check). */
     completedCourses: 3,

@@ -28,7 +28,7 @@ const ROADMAP = [
     title: "Full circulating simulation",
     status: "Under evaluation",
     detail:
-      "Either an in-house model or an integration with an established well control simulator — see docs/simulator.md.",
+      "Either an in-house model or an integration with an established Well Control simulator — see docs/simulator.md.",
   },
 ];
 

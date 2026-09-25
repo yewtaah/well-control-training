@@ -35,7 +35,7 @@ drill is a React component with no backend and no licence to renew.
 
 If a client needs certification-grade simulator hours, that is a referral to a
 partner (option C) rather than something the platform should try to replicate.
-Option B only becomes worth its cost if well command  Assurance starts delivering
+Option B only becomes worth its cost if Well Command  Assurance starts delivering
 accredited courses itself.
 
 ## Proposed drill order
@@ -58,5 +58,5 @@ already write to.
   or is the theory plus drills enough for the audience you have in mind?
 - Should drill scores count toward the course completion certificate, or stay
   practice-only?
-- Is there a well control simulator you have used and rate, that we should
+- Is there a Well Control simulator you have used and rate, that we should
   price out for option B?

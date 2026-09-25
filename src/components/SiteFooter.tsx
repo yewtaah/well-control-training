@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-1">
           <p className="text-base font-semibold text-white">
-            well command  Assurance
+            Well Command  Assurance
           </p>
           <p>1708 Spring Green Blvd Ste. 120 #131</p>
           <a href="tel:+17134444723" className="hover:text-white">
@@ -51,7 +51,7 @@ export function SiteFooter() {
             </a>
           </div>
           <p className="text-white/50">
-            Copyright &copy; {new Date().getFullYear()} well command  Assurance
+            Copyright &copy; {new Date().getFullYear()} Well Command  Assurance
             &mdash; All Rights Reserved.
           </p>
         </div>

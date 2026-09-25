@@ -22,7 +22,7 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Well Command WC Training",
   description:
-    "Well control training for all critical safety roles, office and field, from well command  Assurance.",
+    "Well Control training for all critical safety roles, office and field, from Well Command  Assurance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

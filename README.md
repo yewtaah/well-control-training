@@ -1,13 +1,13 @@
 <div align="center">
 
-<img src="public/logo.png" alt="well command  Assurance" width="96" height="96">
+<img src="public/logo.png" alt="Well Command  Assurance" width="96" height="96">
 
 # Well Command WC Training
 
-**Well control training for every critical safety role — office and field.**
+**Well Control training for every critical safety role — office and field.**
 
 The training and knowledge-sharing platform of
-[well command  Assurance](https://www.well command assurance.com), served at
+[Well Command  Assurance](https://www.well command assurance.com), served at
 `training.well command assurance.com`.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
@@ -22,7 +22,7 @@ The training and knowledge-sharing platform of
 
 ## What it is
 
-A self-paced well control course, delivered in the browser and gated behind an
+A self-paced Well Control course, delivered in the browser and gated behind an
 account. Twelve courses run in order — from pressure fundamentals through kick
 detection, shut-in procedures and kill methods, to barrier management and
 non-conventional methods — each sized for a single 30–40 minute sitting and
@@ -31,11 +31,11 @@ closed out by a knowledge check.
 Progress lives on the trainee's account rather than in their browser, so
 someone can start a lesson on a rig laptop and finish it on their phone. Once
 every lesson in a course is done and its knowledge check is passed, the platform
-issues a printable completion certificate. well command  Assurance staff get a
+issues a printable completion certificate. Well Command  Assurance staff get a
 dashboard showing who signed up, who is active, and how each course is landing.
 
 > **Training objective** — equip individuals to comprehend the basics of well
-> control theory to facilitate and improve safety at the well. A well control
+> control theory to facilitate and improve safety at the well. A Well Control
 > incident detected early and properly responded to will be kept small,
 > mitigating the complexities involved in large kicks.
 
@@ -67,12 +67,12 @@ dashboard showing who signed up, who is active, and how each course is landing.
 <td><b>Analytics</b> — sign-ups, weekly activity, per-course completion and pass rates, overdue courses.</td>
 </tr>
 <tr>
-<td><img src="docs/screenshots/10-certificate.png" alt="A printable completion certificate in well command  Assurance branding"></td>
+<td><img src="docs/screenshots/10-certificate.png" alt="A printable completion certificate in Well Command  Assurance branding"></td>
 <td><img src="docs/screenshots/01-sign-in.png" alt="The branded sign-in screen"></td>
 </tr>
 <tr>
 <td><b>Certificate</b> — issued in the trainee's name with a reference tied to their account; prints straight to PDF.</td>
-<td><b>Sign in</b> — Cognito-backed accounts, in well command  Assurance branding.</td>
+<td><b>Sign in</b> — Cognito-backed accounts, in Well Command  Assurance branding.</td>
 </tr>
 </table>
 
@@ -142,7 +142,7 @@ More captures, with notes for walking a client through them, are in
 | Layer | Choice | Why |
 |-------|--------|-----|
 | **Frontend** | Next.js 16 (App Router), React 19, TypeScript | Course pages are static — prerendered at build time from the curriculum, no per-request work |
-| **Styling** | Tailwind CSS v4 with brand tokens | Navy/gold well command  Assurance palette defined once in `globals.css` |
+| **Styling** | Tailwind CSS v4 with brand tokens | Navy/gold Well Command  Assurance palette defined once in `globals.css` |
 | **Content** | `src/lib/curriculum.ts` | The whole programme as typed data, so routes, progress and reporting all agree on one shape |
 | **Auth** | AWS Cognito via Amplify Gen 2, SES for mail | Email/password accounts, an `admins` group for staff |
 | **Data** | AppSync + DynamoDB via Amplify Data | Owner-scoped rows; admins read across everything |

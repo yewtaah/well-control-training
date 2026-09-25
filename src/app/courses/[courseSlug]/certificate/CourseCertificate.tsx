@@ -41,7 +41,7 @@ export function CourseCertificate({
       scope={courseSlug}
       title={courseTitle}
       subtitle={`Course ${courseOrder} of ${courseCount} · ${completion.lessonsTotal} lessons`}
-      statement={`has completed every lesson in this course and passed the knowledge check with ${completion.quizPercent}%, meeting the well command  Assurance standard for`}
+      statement={`has completed every lesson in this course and passed the knowledge check with ${completion.quizPercent}%, meeting the Well Command  Assurance standard for`}
       earned={completion.complete}
       completedAt={completion.completedAt}
       outstanding={outstanding}
