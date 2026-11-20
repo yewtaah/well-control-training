@@ -2,8 +2,8 @@
 
 **Keeping the Well Command training site up to date — using only Claude and GitHub.**
 
-Written for Chris Scarborough. No coding, no VS Code, no command line. You describe
-the change you want in plain English; Claude makes it; you check it and publish it.
+Written for Chris Scarborough. No coding, no VS Code, no command line. You tell
+Claude what you want changed in plain English; Claude changes it and publishes it.
 
 ---
 
@@ -11,20 +11,18 @@ the change you want in plain English; Claude makes it; you check it and publish 
 
 ```
  You ──► Claude Code Desktop ──► GitHub ──► Live website
- say what     makes the change    holds the     rebuilds itself
- you want     and proposes it     proposal      in ~5–10 minutes
-                                  (a "pull       after you approve
-                                   request")
+ say what     makes the change    stores      rebuilds itself
+ you want     and saves it        the change  in ~5–10 minutes
 ```
 
 | Piece | What it is | Your job |
 |-------|-----------|----------|
-| **Claude Code Desktop** | The Claude app, **Code** tab. It reads the site's files and edits them for you. | Describe changes. Read what it proposes. |
-| **GitHub** | Where the site's files live, with a full history of every change. | Review the proposed change, then press **Merge**. |
-| **The live site** | Rebuilds automatically a few minutes after you merge. | Check it looks right. |
+| **Claude Code Desktop** | The Claude app, **Code** tab. It edits the site's files for you. | Describe the change. Check Claude's summary. |
+| **GitHub** | Where the site's files live, with a full history of every change. | Nothing day-to-day — it's your safety net. |
+| **The live site** | Rebuilds automatically after each change. | Look at it and confirm it's right. |
 
-**The one rule:** nothing reaches the live site until *you* press **Merge** on GitHub.
-Everything before that is a draft you can throw away.
+**Your safety net:** GitHub remembers every version of every file. Any change can be
+undone (see [🆘 Undoing a mistake](#-undoing-a-mistake)).
 
 ---
 
@@ -57,43 +55,39 @@ Do this once. You will not repeat it.
 
 ## ✏️ Part 2 — The everyday routine
 
-Every change follows the same five steps.
+Every change follows the same four steps.
 
 ### Step 1 · Open the project
 Open the Claude app → **Code** tab → pick **well-control-training**.
 
-### Step 2 · Describe the change, and say "use a branch and open a pull request"
-Always include that phrase. It keeps your change as a safe draft.
-
+### Step 2 · Describe the change
 > **Example:**
 > In the *Well Kill Methods* course, add a case history about the Piper Alpha
 > disaster at the end of the first lesson. Here is the text: *[paste your text]*.
-> Make this change on a new branch and open a pull request.
 
 Tips for good requests:
 - Name the **course** and **lesson** (use the titles you see on the site).
 - **Paste your exact wording** if you have it. Otherwise say "draft something and I'll edit it".
 - **One topic per request.** Small changes are easier to check and undo.
 
-### Step 3 · Read what Claude did
-Claude will summarise its change and give you a link to a **pull request** on
-GitHub. Ask it follow-ups freely:
+### Step 3 · Check Claude's summary, then tell it to publish
+Claude will describe what it changed. Ask follow-ups freely:
 > Show me exactly what text you changed.
 > Does this change anything other than lesson text?
 
-### Step 4 · Review on GitHub and merge
-1. Open the link Claude gave you.
-2. Click the **Files changed** tab. 🟩 **Green** lines are added, 🟥 **red** lines are removed.
-   For text changes, just check the wording reads the way you want.
-3. Happy? Click **Merge pull request → Confirm merge**.
-4. Not happy? Go back to Claude and say what to fix — it updates the same pull
-   request. Or click **Close pull request** to throw the draft away. Nothing is lost.
+When you're happy:
+> Looks good — check the site still builds, then save it and push it to GitHub.
 
-### Step 5 · Check the live site
-The site rebuilds automatically. Wait about **5–10 minutes**, then refresh the
-site and look at your change.
+Claude saves ("commits") the change and sends it to GitHub, which publishes it.
+
+### Step 4 · Check the live site
+Wait about **5–10 minutes**, then refresh the site and look at your change.
 
 > If it looks wrong, jump to [🆘 Undoing a mistake](#-undoing-a-mistake).
+
+⚠️ **There is no draft stage.** Once you tell Claude to push, the change goes live
+automatically. Read Claude's summary *before* you say yes. If the build fails, the
+old version of the site stays up, so a typo can't take the site down.
 
 ---
 
@@ -104,12 +98,12 @@ file, `src/lib/curriculum.ts`. You never need to open it; Claude does.
 
 ### 📝 Edit lesson text
 > In the *Pressure Fundamentals* course, lesson *Hydrostatic Pressure*, replace the
-> second paragraph with this text: *[paste]*. Use a branch and open a pull request.
+> second paragraph with this text: *[paste]*.
 
 ### 🏗️ Add a case history
 > Add a case history to the lesson *[lesson title]* in *[course title]*. Title it
 > "Case History: [name]". Use this material: *[paste notes]*. Keep my facts exactly as
-> written. Use a branch and open a pull request.
+> written.
 
 ### ✅ Change or add knowledge-check questions
 Each course ends with a knowledge check. Every question has a prompt, answer
@@ -117,7 +111,7 @@ options, the correct answer, and an explanation shown after submitting.
 
 > In the *[course title]* knowledge check, add a question: *"[question]"* with
 > options A) … B) … C) … D) …. The correct answer is *[letter]*. The explanation
-> is: *[text]*. Use a branch and open a pull request.
+> is: *[text]*.
 
 > Change the pass mark for the *[course title]* knowledge check to 70%.
 
@@ -135,16 +129,16 @@ Courses marked **draft** show an "outline placeholder" note on each lesson.
 
 ---
 
-## ✅ Part 4 — Before you merge: a 60-second checklist
+## ✅ Part 4 — Before you say "push it": a 60-second checklist
 
-- [ ] The **Files changed** tab shows only the lessons/questions I meant to change.
+- [ ] Claude's summary shows only the lessons/questions I meant to change.
 - [ ] My wording, numbers, and units are exactly right (Claude can slip on technical facts — **you are the subject-matter expert**).
 - [ ] For a knowledge-check question: exactly one correct answer, and the explanation matches it.
 - [ ] Nothing about sign-in, accounts, or settings was touched. (If it was, stop and ask Scott.)
 
 > 🧠 **Important:** Claude is a fast writer, not a well-control authority. Anything
 > technical that Claude drafts from its own knowledge — rather than from your text —
-> must be checked by you before merging.
+> must be checked by you before it goes live.
 
 ---
 
@@ -154,8 +148,9 @@ You cannot permanently break the site: GitHub keeps every version.
 
 | Situation | What to do |
 |-----------|-----------|
-| **Haven't merged yet** | Close the pull request on GitHub. Nothing changed. |
-| **Merged, and the live site looks wrong** | In Claude: *"Undo my last merged pull request. Use a branch and open a pull request."* Merge that one. The site goes back to how it was. |
+| **Changed your mind before pushing** | Tell Claude: *"Discard those changes."* Nothing has gone live. |
+| **Pushed, and the live site looks wrong** | Tell Claude: *"Undo my last change and push it."* The site goes back to how it was in a few minutes. |
+| **Want to undo something older** | Tell Claude: *"Show me my recent changes"*, then *"Undo the one that [describe it]."* |
 | **Claude is confused or went off track** | Start a **new** conversation in the Code tab and say what you want again. |
 | **Anything involving sign-in, emails, the database, or AWS** | Stop. Message Scott. |
 
@@ -168,7 +163,6 @@ Content changes are safe. Leave these to Scott:
 - ❌ Changing sign-in, accounts, or the admin dashboard
 - ❌ Changing the AWS setup, email sending, or the database
 - ❌ Deleting the repository, or "force-pushing"
-- ❌ Merging without reading the **Files changed** tab
 
 ---
 
@@ -176,27 +170,30 @@ Content changes are safe. Leave these to Scott:
 
 | I want to… | Say to Claude |
 |-----------|---------------|
-| Change some wording | "In *[course]*, lesson *[lesson]*, change … to …. Use a branch and open a pull request." |
-| Add a case history | "Add a case history to *[lesson]* … Use a branch and open a pull request." |
-| Add a quiz question | "In the *[course]* knowledge check, add a question … Use a branch and open a pull request." |
+| Change some wording | "In *[course]*, lesson *[lesson]*, change … to …." |
+| Add a case history | "Add a case history to *[lesson]* …" |
+| Add a quiz question | "In the *[course]* knowledge check, add a question …" |
 | See what Claude changed | "Show me exactly what you changed." |
-| Revise a draft | "Update the same pull request: …" |
-| Undo a merged change | "Undo my last merged pull request. Use a branch and open a pull request." |
+| Publish | "Check it builds, then save it and push it to GitHub." |
+| Throw away unpublished work | "Discard those changes." |
+| Undo a published change | "Undo my last change and push it." |
 
-**Stuck?** Contact Scott, and send him the link to the pull request or a screenshot of what you see.
+**Stuck?** Contact Scott, and send him a screenshot of what you see.
 
 ---
 
 ## 🧑‍💻 Notes for Scott (not for Chris)
 
-- Chris (`WellcommandChris`) is already a collaborator with write access. `main` is **not**
-  branch-protected, so nothing technically stops a direct push. Consider enabling
-  *Require a pull request before merging* so the rule in this guide is enforced.
-- Amplify builds only `main`. There are **no PR preview builds**, and
-  `amplify_outputs.json` is gitignored, so Chris cannot run the site locally. The guide
-  therefore tells him to verify on the live site after merging. Enabling PR previews on the
-  Amplify app would let him check a change *before* merging.
-- Content changes only touch `src/lib/curriculum.ts`; they do not redeploy the backend in a
-  meaningful way, but every merge to `main` still runs `ampx pipeline-deploy`.
-- [`CLAUDE.md`](../CLAUDE.md) carries plain-English operating rules so Claude follows this guide's
-  workflow (branch + PR, explain in plain language, refuse backend changes) in Chris's sessions.
+- This guide has Chris commit **straight to `main`** — no branches or pull requests — by
+  design, to keep it simple for a non-technical user. Every push triggers an Amplify
+  build and `ampx pipeline-deploy`.
+- A failed build leaves the previous deployment live (build #9 failed this way and the
+  site stayed up), which is the main safeguard. `CLAUDE.md` tells Claude to run
+  `npm run build` before pushing.
+- There are no PR previews and no local preview (`amplify_outputs.json` is gitignored), so
+  Chris verifies on the live site after pushing.
+- This departs from the "no direct commits to `main`" rule in your global instructions;
+  that rule still applies to your own work.
+- Chris (`WellcommandChris`) already has write access. His commits will show under his own
+  GitHub name, which makes `git log` a clear audit trail of who changed what.
+- [`CLAUDE.md`](../CLAUDE.md) carries the plain-English operating rules for Chris's sessions.
