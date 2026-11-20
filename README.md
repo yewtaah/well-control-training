@@ -225,3 +225,7 @@ merge through a pull request — feature work does not land on `main` directly.
 
 Course content lives in [`src/lib/curriculum.ts`](src/lib/curriculum.ts) as
 typed data; adding a lesson is an edit to that file, not a new route.
+
+**Not a developer?** The [Maintainer's Guide](docs/maintainer-guide.md) shows how to
+update lessons, case histories and knowledge checks using only Claude Code Desktop
+and GitHub — no VS Code or command line.
